@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "10740442965",
+    "project_id": "epaunalite",
+    "storage_bucket": "epaunalite.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10740442965:android:8c0b350810579fadb5f1dc",
+        "android_client_info": {
+          "package_name": "com.example.paunalite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1PFYV-hh3NfHIoyK6mh5cd-6BUHXihB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
