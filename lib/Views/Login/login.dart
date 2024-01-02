@@ -1,12 +1,14 @@
+import 'dart:io';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:paunalite/Views/Internet/not_connection.dart';
-import 'package:paunalite/Views/customer_counter2.dart';
-import 'package:paunalite/controller/login/repository/login_repository.dart';
+import 'package:ePaunaLite/Views/Internet/not_connection.dart';
+import 'package:ePaunaLite/Views/customer_counter2.dart';
+import 'package:ePaunaLite/controller/login/repository/login_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../controller/ServiceProviderDetail/model/ServiceProviderDetailModel.dart';
 import '../../controller/ServiceProviderDetail/repository/ServiceProviderDetailRepo.dart';
@@ -43,18 +45,23 @@ class _LoginState extends State<Login> {
   }
 
   getPlayerId() async {
-     String token ='';
-  await FirebaseMessaging.instance.requestPermission().then((value) {
-            FirebaseMessaging.instance.getToken().then((value) {
+    String token = '';
+    await FirebaseMessaging.instance.requestPermission().then((value) {
+      Platform.isIOS
+          ? FirebaseMessaging.instance.getAPNSToken().then((value) {
+              print('Token $value');
+              token = value.toString();
+            })
+          : FirebaseMessaging.instance.getToken().then((value) {
               print('Token $value');
               playerId = value.toString();
             });
-          });
-  print("The token value is"+token.toString());
-  print(token);
-  setState(() {
-    playerId = token!;
-  });
+    });
+    print("The token value is" + token.toString());
+    print(token);
+    setState(() {
+      playerId = token!;
+    });
     // var status = await OneSignal.shared.getDeviceState();
     // if (status != null && status.userId != null) {
     //   setState(() {
@@ -323,13 +330,12 @@ class _LoginState extends State<Login> {
                                           hotelData!.mobileNumber.toString();
                                       prefs.setString('hotelName', hotelName);
                                       prefs.setString('phoneno', phoneno);
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  CRUDPage(
-                                                      hotelName: hotelName,
-                                                      notification: [],)
-                                                      ));
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                              builder: (context) => CRUDPage(
+                                                    hotelName: hotelName,
+                                                    notification: [],
+                                                  )));
                                     } else {
                                       Navigator.pop(context);
                                       print("login failed");

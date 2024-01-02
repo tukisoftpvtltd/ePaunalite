@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
-import 'package:paunalite/Utils/colors.dart';
-import 'package:paunalite/controller/manage_service/repository/get_service_repository.dart';
+import 'package:ePaunaLite/Utils/colors.dart';
+import 'package:ePaunaLite/controller/manage_service/repository/get_service_repository.dart';
 
 import '../model/services_model.dart';
 import '../model/status_model.dart';

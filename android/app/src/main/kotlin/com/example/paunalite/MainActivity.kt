@@ -1,4 +1,4 @@
-package com.example.paunalite
+package com.tukisoft.ePaunaLite
 
 import android.content.BroadcastReceiver
 import android.content.Context

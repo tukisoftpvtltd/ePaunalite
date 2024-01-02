@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:paunalite/Views/services/manage_service.dart';
+import 'package:ePaunaLite/Views/services/manage_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Utils/colors.dart';
@@ -90,23 +90,23 @@ class _CustomerDrawerState extends State<CustomerDrawer> {
                 children: [
                   ClipOval(
                     child: Container(
-                      height: 60,
-                      width: 60,
-                      child: Image.network(
-                        "https://pauna.tukisoft.com.np/ServiceProviderProfile/${widget.logo}",
-                        fit: BoxFit.cover,
+                        height: 60,
+                        width: 60,
+                        child: Image.network(
+                          "https://pauna.tukisoft.com.np/ServiceProviderProfile/${widget.logo}",
+                          fit: BoxFit.cover,
                         )
-                      // FadeInImage.assetNetwork(
-                      //   placeholder: 'assets/user.png',
-                      //   image: "https://pauna.tukisoft.com.np/ServiceProviderProfile/${widget.logo}",
-                      //   fit: BoxFit.fill,
-                      // ),
-                    ),
+                        // FadeInImage.assetNetwork(
+                        //   placeholder: 'assets/user.png',
+                        //   image: "https://pauna.tukisoft.com.np/ServiceProviderProfile/${widget.logo}",
+                        //   fit: BoxFit.fill,
+                        // ),
+                        ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Container(
-                      width: Get.width/2.4,
+                      width: Get.width / 2.4,
                       child: Text(
                         widget.fullname,
                         overflow: TextOverflow.ellipsis,

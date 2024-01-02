@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:paunalite/controller/manage_service/model/status_model.dart';
+import 'package:ePaunaLite/controller/manage_service/model/status_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../../userData/userData.dart';

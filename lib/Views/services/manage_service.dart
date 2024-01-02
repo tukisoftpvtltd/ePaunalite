@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:paunalite/Views/app_data/colors.dart';
-import 'package:paunalite/Views/components/buttons.dart';
-import 'package:paunalite/controller/manage_service/bloc/manage_service_bloc.dart';
+import 'package:ePaunaLite/Views/app_data/colors.dart';
+import 'package:ePaunaLite/Views/components/buttons.dart';
+import 'package:ePaunaLite/controller/manage_service/bloc/manage_service_bloc.dart';
 
 import '../../Utils/constants.dart';
 
@@ -121,10 +121,10 @@ class _ManageServiceState extends State<ManageService> {
                             const Text(
                               '(Select One)',
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold,color: Colors.grey
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey),
                             ),
-                            ),
-                            
                           ],
                         ),
                         const SizedBox(
@@ -139,7 +139,7 @@ class _ManageServiceState extends State<ManageService> {
                               //     selectedContainerIndex =0;
                               // serviceId =
                               //           state.serviceModel[0].serviceId;
-                              
+
                               return Padding(
                                 padding: const EdgeInsets.only(bottom: 8.0),
                                 child: GestureDetector(
@@ -328,31 +328,30 @@ class _ManageServiceState extends State<ManageService> {
                         ),
                         CustomButton(
                           onpressed: () {
-                            try{
-
-                           
-                            if (_formKey.currentState!.validate()) {
-                              BlocProvider.of<ManageServiceBloc>(context).add(
-                                UpdateServiceEvent(
-                                  state.serviceModel[selectedContainerIndex]
-                                      .serviceId ,
-                                  roomAvailableController.text,
-                                  startDate.toString(),
-                                  endDate.toString(),
-                                ),
-                              );
-                            }
-                             }
-                            catch(e){
+                            try {
+                              if (_formKey.currentState!.validate()) {
+                                BlocProvider.of<ManageServiceBloc>(context).add(
+                                  UpdateServiceEvent(
+                                    state.serviceModel[selectedContainerIndex]
+                                        .serviceId,
+                                    roomAvailableController.text,
+                                    startDate.toString(),
+                                    endDate.toString(),
+                                  ),
+                                );
+                              }
+                            } catch (e) {
                               Fluttertoast.showToast(
-      msg: "Please select a room type",
-      toastLength: Toast.LENGTH_SHORT, // Duration for which the toast is visible
-      gravity: ToastGravity.BOTTOM, // Toast gravity
-      timeInSecForIosWeb: 1, // Time for iOS-specific customization
-      backgroundColor: Colors.black,
-      textColor: Colors.white,
-      fontSize: 16.0,
-    );
+                                msg: "Please select a room type",
+                                toastLength: Toast
+                                    .LENGTH_SHORT, // Duration for which the toast is visible
+                                gravity: ToastGravity.BOTTOM, // Toast gravity
+                                timeInSecForIosWeb:
+                                    1, // Time for iOS-specific customization
+                                backgroundColor: Colors.black,
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                              );
                             }
                           },
                           label: "SUBMIT",

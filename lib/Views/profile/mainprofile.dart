@@ -3,9 +3,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:paunalite/controller/ServiceProviderDetail/model/ServiceProviderDetailModel.dart';
-import 'package:paunalite/controller/ServiceProviderDetail/repository/ServiceProviderDetailRepo.dart';
-import 'package:paunalite/controller/updateAddress/repository/updateAddressRepo.dart';
+import 'package:ePaunaLite/controller/ServiceProviderDetail/model/ServiceProviderDetailModel.dart';
+import 'package:ePaunaLite/controller/ServiceProviderDetail/repository/ServiceProviderDetailRepo.dart';
+import 'package:ePaunaLite/controller/updateAddress/repository/updateAddressRepo.dart';
 import '../../Utils/colors.dart';
 import '../../controller/address/address_model.dart';
 import '../../controller/address/address_repository.dart';
@@ -19,11 +19,12 @@ class MainProfile extends StatefulWidget {
   String phoneno;
   String address;
   String city;
-   MainProfile({super.key,
-   required this.hotelName,
-   required this.phoneno,
-   required this.address,
-   required this.city});
+  MainProfile(
+      {super.key,
+      required this.hotelName,
+      required this.phoneno,
+      required this.address,
+      required this.city});
 
   @override
   State<MainProfile> createState() => MainProfileState();
@@ -31,9 +32,9 @@ class MainProfile extends StatefulWidget {
 
 class MainProfileState extends State<MainProfile> {
   TextEditingController hotelname = new TextEditingController();
-   TextEditingController address = new TextEditingController();
-   TextEditingController phone= new TextEditingController();
-   TextEditingController city= new TextEditingController();
+  TextEditingController address = new TextEditingController();
+  TextEditingController phone = new TextEditingController();
+  TextEditingController city = new TextEditingController();
   TextEditingController current_password = TextEditingController();
   TextEditingController new_password = TextEditingController();
   // UpdatePasswordRepository updatePasswordRepository =
@@ -44,39 +45,38 @@ class MainProfileState extends State<MainProfile> {
   // late TextEditingController city;
   @override
   void initState() {
-    hotelname.text =widget.hotelName;
+    hotelname.text = widget.hotelName;
     address.text = widget.address;
     phone.text = widget.phoneno;
     city.text = widget.city;
     super.initState();
     getSid();
   }
-  String sid ='';
-  getSid()async{
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  String? sidValue = prefs.getString('sid');
-  setState(() {
-    sid = sidValue.toString();
-  });
-  }
-  getData()async{
- 
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  String? hotelName = prefs.getString('hotelName');
-  String? phoneno = prefs.getString('phoneno');
-  String? sidValue = prefs.getString('sid');
-  String? addressValue = prefs.getString('address');
-   String? cityValue = prefs.getString('city');
-  setState(() {
-    hotelname.text = hotelName!;
-    phone.text = phoneno!;
-    address.text =addressValue!;
-    city.text = cityValue!;
-    sid = sidValue.toString();
-  });
 
+  String sid = '';
+  getSid() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? sidValue = prefs.getString('sid');
+    setState(() {
+      sid = sidValue.toString();
+    });
   }
 
+  getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? hotelName = prefs.getString('hotelName');
+    String? phoneno = prefs.getString('phoneno');
+    String? sidValue = prefs.getString('sid');
+    String? addressValue = prefs.getString('address');
+    String? cityValue = prefs.getString('city');
+    setState(() {
+      hotelname.text = hotelName!;
+      phone.text = phoneno!;
+      address.text = addressValue!;
+      city.text = cityValue!;
+      sid = sidValue.toString();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,27 +86,26 @@ class MainProfileState extends State<MainProfile> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: PrimaryColors.primarywhite,
-            title: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 40, 0),
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  'Service Information',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                    color: Colors.black,
-                  ),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: PrimaryColors.primarywhite,
+          title: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 40, 0),
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                'Service Information',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: Colors.black,
                 ),
               ),
             ),
-            leading: BackButton(color: Colors.black),
-            
-            ),
+          ),
+          leading: BackButton(color: Colors.black),
+        ),
         body: Padding(
           padding: EdgeInsets.only(top: 2),
           child: Card(
@@ -116,14 +115,15 @@ class MainProfileState extends State<MainProfile> {
                 padding: EdgeInsets.all(0),
                 // EdgeInsets.fromLTRB(size.small() * 12, size.small() * 15,
                 //     size.small() * 12, size.small() * 12),
-                
+
                 child: Column(
                   // mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Container(
-                      color:Colors.white,
-                      height: 10,),
+                      color: Colors.white,
+                      height: 10,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -135,7 +135,7 @@ class MainProfileState extends State<MainProfile> {
                         //     fontWeight: FontWeight.w600,
                         //   ),
                         // ),
-                        
+
                         Row(
                           children: [
                             Container(
@@ -169,17 +169,20 @@ class MainProfileState extends State<MainProfile> {
                       ],
                     ),
                     Container(
-                      color:Colors.white,
-                      height: 10,),
+                      color: Colors.white,
+                      height: 10,
+                    ),
                     Container(
-                      color:PrimaryColors.backgroundcolor,
-                      height: 5,),
+                      color: PrimaryColors.backgroundcolor,
+                      height: 5,
+                    ),
                     Container(
-                      color:Colors.white,
-                      height: 10,),
-                    
+                      color: Colors.white,
+                      height: 10,
+                    ),
+
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal:10.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Text(
                         'Your Information :',
                         style: TextStyle(
@@ -199,13 +202,12 @@ class MainProfileState extends State<MainProfile> {
                     SizedBox(
                       height: size.ex_small() * 13,
                     ),
-                    
+
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal:10.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Form(
                         key: _formKey,
                         child: TextFormField(
-                          
                           textInputAction: TextInputAction.next,
                           controller: phone,
                           validator: (value) {
@@ -224,7 +226,8 @@ class MainProfileState extends State<MainProfile> {
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
-                            contentPadding: EdgeInsets.all(size.ex_small() * 10),
+                            contentPadding:
+                                EdgeInsets.all(size.ex_small() * 10),
                             hintStyle: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xff7A7C7E),
@@ -299,7 +302,7 @@ class MainProfileState extends State<MainProfile> {
                     //                 style: ElevatedButton.styleFrom(
                     //                     backgroundColor: mainColor),
                     //                 onPressed: () async {
-                                      
+
                     //                   // await updatePasswordRepository
                     //                   //     .update(
                     //                   //         new_password: new_password.text,
@@ -355,100 +358,83 @@ class MainProfileState extends State<MainProfile> {
                     //       'Do you want to change password ?',
                     //       style: TextStyle(color: mainColor),
                     //     )),
-                    
-                    GestureDetector(
-                      onTap: () async{
-                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return const AlertDialog(
-                                                content: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    Text('Loading'),
-                                                    CircularProgressIndicator
-                                                        .adaptive()
-                                                  ],
-                                                ),
-                                              );
-                                            });
-                        UpdateAddressRepository repo = UpdateAddressRepository();
-                                      bool checker = await repo.updateAddress(
-                                        sid,
-                                      hotelname.text,
-                                      phone.text,
-                                      address.text,
-                                      city.text);
-                                    if(checker == false){
-                                      Navigator.of(context).pop();
-                                            showDialog(
-                                                context: context,
-                                                builder: (context) {
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                      "Update Failed",
-                                                      style: TextStyle(
-                                                          color: mainColor,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                    content: Text("Error Occured"),
-                                                    actions: [
-                                                      ElevatedButton(
-                                                          style: ElevatedButton
-                                                              .styleFrom(
-                                                                  backgroundColor:
-                                                                      mainColor),
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: Text('Ok'))
-                                                    ],
-                                                  );
-                                                });   
-                                    }
-                                    else{
-                                       Navigator.of(context).pop();
-                                      showDialog(
-                                                context: context,
-                                                builder: (context) {
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                      "Updated Successfully",
-                                                      style: TextStyle(
-                                                          color: mainColor,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                    content: Text("Update was successful"),
-                                                    actions: [
-                                                      ElevatedButton(
-                                                          style: ElevatedButton
-                                                              .styleFrom(
-                                                                  backgroundColor:
-                                                                      mainColor),
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: Text('Ok'))
-                                                    ],
-                                                  
-                                                  );
-                                                });
-                                               
-                                                                
 
-                                    }
+                    GestureDetector(
+                      onTap: () async {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const AlertDialog(
+                                content: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text('Loading'),
+                                    CircularProgressIndicator.adaptive()
+                                  ],
+                                ),
+                              );
+                            });
+                        UpdateAddressRepository repo =
+                            UpdateAddressRepository();
+                        bool checker = await repo.updateAddress(
+                            sid,
+                            hotelname.text,
+                            phone.text,
+                            address.text,
+                            city.text);
+                        if (checker == false) {
+                          Navigator.of(context).pop();
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text(
+                                    "Update Failed",
+                                    style: TextStyle(
+                                        color: mainColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  content: Text("Error Occured"),
+                                  actions: [
+                                    ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: mainColor),
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text('Ok'))
+                                  ],
+                                );
+                              });
+                        } else {
+                          Navigator.of(context).pop();
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text(
+                                    "Updated Successfully",
+                                    style: TextStyle(
+                                        color: mainColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  content: Text("Update was successful"),
+                                  actions: [
+                                    ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: mainColor),
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text('Ok'))
+                                  ],
+                                );
+                              });
+                        }
 
                         // if (_formKey.currentState!.validate()) {
                         //   setState(() {
@@ -512,10 +498,10 @@ class MainProfileState extends State<MainProfile> {
     };
     setState(() {
       storeUsername(data['FirstName'], data['LastName']);
-     // firstname.text = data['FirstName'];
-     // lastname.text = data['LastName'];
+      // firstname.text = data['FirstName'];
+      // lastname.text = data['LastName'];
       phone.text = data['MobileNumber'] ?? '';
-     // email.text = data['Email'] ?? '';
+      // email.text = data['Email'] ?? '';
       gender = data['Gender'] ?? '';
     });
   }
@@ -594,7 +580,7 @@ class textformfieldforfill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal:10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: TextFormField(
         textInputAction:
             (lastIndex == true) ? TextInputAction.none : TextInputAction.next,
